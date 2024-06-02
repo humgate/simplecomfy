@@ -8,7 +8,7 @@
     const style_workflow = '/simplecomfy/js/style_workflow_api.json';
     const normal_workflow = '/simplecomfy/js/normal_workflow_api.json';
     async function loadWorkflow() {
-        const response = await fetch('/simplecomfy/js/normal_workflow_api.json');
+        const response = await fetch('/simplecomfy/js/style_workflow_api.json');
         return await response.json();
     }
     const workflow = await loadWorkflow();
@@ -45,15 +45,26 @@
     const _maingen = document.getElementById('maingen');
     const _queue_btn = document.getElementById("queue_btn");
     const _prompt = document.getElementById('prompt');
+    const _style_img_input = document.getElementById('img_file');
 
     _queue_btn.onclick = function () {
          queue_prompt(workflow);
     };
 
+    _style_img_input.onchange = function (event) {
+        uploadFile(_style_img_input.files[0], true);
+    }
+
+    _style_img_input.onchange = function (event) {
+        uploadFile(_style_img_input.files[0], true);
+    }
+
     //Post queue request
     async function queue_prompt(prompt = {}) {
         const data = { 'prompt': prompt, 'client_id': client_id };
-        workflow["22"]["inputs"]["text"] = _prompt.value;
+        if (_prompt.value !== "") {
+            workflow["22"]["inputs"]["text"] = _prompt.value;
+        }
         workflow["118"]["inputs"]["seed"] = Math.floor(Math.random() * 9999999999);
 
         const response = await fetch('/prompt', {
@@ -65,5 +76,29 @@
             body: JSON.stringify(data)
         });
     }
+
+
+	async function uploadFile(file, updateNode, pasted = false) {
+	    try {
+		    // Wrap file in formdata so it includes filename
+			const body = new FormData();
+			body.append("image", file);
+			if (pasted) body.append("subfolder", "pasted");
+			const resp = await fetch("/upload/image", {
+				method: "POST",
+				body,
+			});
+
+			if (resp.status === 200) {
+                console.log("Image " + file.name +  " uploaded.");
+                workflow["49"]["inputs"]["image"] = file.name;
+            } else {
+				alert(resp.status + " - " + resp.statusText);
+			}
+		} catch (error) {
+			alert(error);
+		}
+
+	}
 
 })(window, document, undefined);

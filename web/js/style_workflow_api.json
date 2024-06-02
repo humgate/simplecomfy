@@ -59,7 +59,7 @@
   },
   "22": {
     "inputs": {
-      "text": "high-resolution photo of a beautiful young woman in vintage dress with middle length skirt, vintage shoes, detailed skin, head raised:1.2 up, motion:1.5,  moving artistically on stage, motion",
+      "text": "high-resolution photo of a beautiful young woman in vintage dress with middle length skirt, vintage shoes, detailed skin, head raised:1.2 up, motion:1.5, moving artistically on stage, emotional",
       "clip": [
         "4",
         1
@@ -85,7 +85,7 @@
   },
   "49": {
     "inputs": {
-      "image": "./img/cirqusStyle2.jpg",
+      "image": "defaultStyle.png",
       "upload": "image"
     },
     "class_type": "LoadImage",
