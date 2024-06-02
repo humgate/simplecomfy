@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple comfy</title>
+    <style>
+    html {
+        height: 100%;
+    }
+    html, body {
+        background: #333;
+        color: #eee;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    #maingen {
+        margin: 0;
+        width: 85%;
+        height: auto;
+        max-width: 512px;
+        background: #111;
+        border-radius: 6px;
+        margin: 4px;
+    }
+
+    #prompt {
+        top: 0;
+        left: 0;
+        width: 85%;
+        height: 3.0em;
+        margin: 4px;
+        border: 0;
+        font-size: 1.4em;
+        padding: 3px 3px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+    }
+    #queue_btn {
+        top:50%;
+        width: 150px;
+        background-color:#0a0a23;
+        color: #fff;
+        border-radius:10px;
+        font-size: 1.4em;
+        background-color: white;
+        color: black;
+        border: 2px solid #FFFFFF;
+        margin: 4px;
+    }
+
+    </style>
+</head>
+<body>
+<textarea id="prompt" rows="3"></textarea><br>
+<button id="queue_btn">Generate</button><br>
+<img src="" width="512" height="768" alt = " " id="maingen" />
+<br>
+
+<script src="/simplecomfy/js/app.js"></script>
+</body>
+</html>

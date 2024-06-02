@@ -1,0 +1,340 @@
+{
+  "3": {
+    "inputs": {
+      "seed": [
+        "118",
+        0
+      ],
+      "steps": 8,
+      "cfg": 1,
+      "sampler_name": "dpmpp_sde",
+      "scheduler": "sgm_uniform",
+      "denoise": 1,
+      "model": [
+        "106",
+        0
+      ],
+      "positive": [
+        "22",
+        0
+      ],
+      "negative": [
+        "23",
+        0
+      ],
+      "latent_image": [
+        "76",
+        5
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "SD1.5/juggernaut_reborn.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "22": {
+    "inputs": {
+      "text": "high-resolution photo of a beautiful small:1.2 breast young girl in vintage dress with middle length skirt, vintage shoes, detailed skin, head raised:1.2 up, motion:1.5,  moving artistically on stage, motion",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "23": {
+    "inputs": {
+      "text": "(text, bad photography:1.3), (worst quality, low quality, blurry:1.2), (bad teeth, deformed teeth, deformed lips), (bad anatomy, bad proportions:1.1), (deformed iris, deformed pupils), (deformed eyes, bad eyes), (deformed face, ugly face, bad face), (deformed hands, bad hands, fused fingers, text), morbid, mutilated, mutation, disfigured, naked:1.5, nude:1.5, tights:1.5",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "64": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "105:11",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "76": {
+    "inputs": {
+      "width": 832,
+      "height": 1218,
+      "aspect_ratio": "SD1.5 - 3:2 landscape 768x512",
+      "swap_dimensions": "On",
+      "upscale_factor": 1,
+      "prescale_factor": 1,
+      "batch_size": 1
+    },
+    "class_type": "CR Aspect Ratio",
+    "_meta": {
+      "title": "🔳 CR Aspect Ratio"
+    }
+  },
+  "106": {
+    "inputs": {
+      "lora_name": "Hyper-SD15-8steps-lora.safetensors",
+      "strength_model": 1,
+      "model": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoraLoaderModelOnly"
+    }
+  },
+  "118": {
+    "inputs": {
+      "seed": 699877460339069
+    },
+    "class_type": "CR Seed",
+    "_meta": {
+      "title": "🌱 CR Seed"
+    }
+  },
+  "105:0": {
+    "inputs": {
+      "library": "insightface",
+      "provider": "CPU"
+    },
+    "class_type": "FaceAnalysisModels",
+    "_meta": {
+      "title": "Face Analysis Models"
+    }
+  },
+  "105:1": {
+    "inputs": {
+      "model": "CIDAS/clipseg-rd64-refined"
+    },
+    "class_type": "CLIPSeg Model Loader",
+    "_meta": {
+      "title": "CLIPSeg Model Loader"
+    }
+  },
+  "105:3": {
+    "inputs": {
+      "padding": 0,
+      "padding_percent": 0.1,
+      "index": -1,
+      "analysis_models": [
+        "105:0",
+        0
+      ],
+      "image": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "FaceBoundingBox",
+    "_meta": {
+      "title": "Face Bounding Box"
+    }
+  },
+  "105:4": {
+    "inputs": {
+      "width": [
+        "76",
+        0
+      ],
+      "height": 0,
+      "interpolation": "lanczos",
+      "keep_proportion": true,
+      "condition": "always",
+      "multiple_of": 0,
+      "image": [
+        "105:3",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "🔧 Image Resize"
+    }
+  },
+  "105:5": {
+    "inputs": {
+      "pixels": [
+        "105:4",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "105:6": {
+    "inputs": {
+      "images": [
+        "105:4",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "105:7": {
+    "inputs": {
+      "seed": 693616665950932,
+      "steps": 8,
+      "cfg": 1,
+      "sampler_name": "dpmpp_sde",
+      "scheduler": "sgm_uniform",
+      "denoise": 0.4,
+      "model": [
+        "106",
+        0
+      ],
+      "positive": [
+        "22",
+        0
+      ],
+      "negative": [
+        "23",
+        0
+      ],
+      "latent_image": [
+        "105:5",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "105:8": {
+    "inputs": {
+      "samples": [
+        "105:7",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "105:9": {
+    "inputs": {
+      "text": "face",
+      "image": [
+        "105:8",
+        0
+      ],
+      "clipseg_model": [
+        "105:1",
+        0
+      ]
+    },
+    "class_type": "CLIPSeg Masking",
+    "_meta": {
+      "title": "CLIPSeg Masking"
+    }
+  },
+  "105:10": {
+    "inputs": {
+      "width": [
+        "105:3",
+        3
+      ],
+      "height": [
+        "105:3",
+        4
+      ],
+      "interpolation": "nearest",
+      "keep_proportion": false,
+      "condition": "always",
+      "multiple_of": 0,
+      "image": [
+        "105:8",
+        0
+      ]
+    },
+    "class_type": "ImageResize+",
+    "_meta": {
+      "title": "🔧 Image Resize"
+    }
+  },
+  "105:11": {
+    "inputs": {
+      "x": [
+        "105:3",
+        1
+      ],
+      "y": [
+        "105:3",
+        2
+      ],
+      "resize_source": false,
+      "destination": [
+        "8",
+        0
+      ],
+      "source": [
+        "105:10",
+        0
+      ],
+      "mask": [
+        "105:9",
+        0
+      ]
+    },
+    "class_type": "ImageCompositeMasked",
+    "_meta": {
+      "title": "ImageCompositeMasked"
+    }
+  }
+}
