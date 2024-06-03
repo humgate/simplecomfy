@@ -11,12 +11,11 @@
     html, body {
         background: #333;
         color: #eee;
-        margin: 0;
+        margin: 0px;
         padding: 0;
         text-align: center;
     }
     #maingen {
-        margin: 0;
         width: 85%;
         height: auto;
         max-width: 512px;
@@ -24,7 +23,6 @@
         border-radius: 6px;
         margin: 4px;
     }
-
     #prompt {
         top: 0;
         left: 0;
@@ -52,19 +50,25 @@
         border: 2px solid #FFFFFF;
         margin: 4px;
     }
-
+    .button {
+        margin: 4px;
+    }
     </style>
 </head>
 <body>
 <textarea id="prompt" rows="3"></textarea><br>
 <div>
-    <label for="img_file" style="cursor: pointer;">Style Image:</label>
-    <input type="file" accept="image/*" name="image" id="img_file">
+    <label for="style_img_file" style="cursor: pointer;">Style Image:</label>
+    <input class="button" type="file" accept="image/*" name="image" id="style_img_file">
+</div>
+<div>
+    <label for="doll_img_file" style="cursor: pointer;">Doll Image:</label>
+    <input class="button" type="file" accept="image/*" name="image" id="doll_img_file">
 </div>
 <button id="queue_btn">Generate</button><br>
-<img src="" width="512" height="768" alt = " " id="maingen" />
+<img src="" width="832" height="1216" alt = " " id="maingen" />
 <br>
 
-<script src="/simplecomfy/js/app.js"></script>
+<script type="module" src="/simplecomfy/js/app.js"></script>
 </body>
 </html>
