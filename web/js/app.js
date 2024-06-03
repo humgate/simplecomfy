@@ -55,10 +55,6 @@
         uploadFile(_style_img_input.files[0], true);
     }
 
-    _style_img_input.onchange = function (event) {
-        uploadFile(_style_img_input.files[0], true);
-    }
-
     //Post queue request
     async function queue_prompt(prompt = {}) {
         const data = { 'prompt': prompt, 'client_id': client_id };
@@ -77,28 +73,26 @@
         });
     }
 
+    async function uploadFile(file, updateNode, pasted = false) {
+    	try {
+	    // Wrap file in formdata so it includes filename
+	    const body = new FormData();
+		body.append("image", file);
+		if (pasted) body.append("subfolder", "pasted");
+		const resp = await fetch("/upload/image", {
+		    method: "POST",
+		    body,
+		});
 
-	async function uploadFile(file, updateNode, pasted = false) {
-	    try {
-		    // Wrap file in formdata so it includes filename
-			const body = new FormData();
-			body.append("image", file);
-			if (pasted) body.append("subfolder", "pasted");
-			const resp = await fetch("/upload/image", {
-				method: "POST",
-				body,
-			});
-
-			if (resp.status === 200) {
-                console.log("Image " + file.name +  " uploaded.");
-                workflow["49"]["inputs"]["image"] = file.name;
-            } else {
-				alert(resp.status + " - " + resp.statusText);
-			}
-		} catch (error) {
-			alert(error);
+		if (resp.status === 200) {
+                    console.log("Image " + file.name +  " uploaded.");
+                    workflow["49"]["inputs"]["image"] = file.name;
+                } else {
+		    alert(resp.status + " - " + resp.statusText);
 		}
-
+	} catch (error) {
+	    alert(error);
 	}
+   }
 
 })(window, document, undefined);
