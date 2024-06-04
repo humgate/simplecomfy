@@ -1,7 +1,7 @@
 {
   "3": {
     "inputs": {
-      "seed": 863608697438520,
+      "seed": 861407544314,
       "steps": 6,
       "cfg": 1.3,
       "sampler_name": "dpmpp_sde",
@@ -56,7 +56,7 @@
   },
   "12": {
     "inputs": {
-      "image": "doll_image.jpg",
+      "image": "9l.jpg",
       "upload": "image"
     },
     "class_type": "LoadImage",
@@ -92,7 +92,7 @@
   },
   "49": {
     "inputs": {
-      "image": "style_image.jpg",
+      "image": "public1.jpg",
       "upload": "image"
     },
     "class_type": "LoadImage",
@@ -346,7 +346,7 @@
       "width": 832,
       "height": 0,
       "interpolation": "lanczos",
-      "keep_proportion": true,
+      "method": "keep proportion",
       "condition": "always",
       "multiple_of": 0,
       "image": [
@@ -405,6 +405,18 @@
     "class_type": "SaveImage",
     "_meta": {
       "title": "Save Image"
+    }
+  },
+  "125": {
+    "inputs": {
+      "images": [
+        "107",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
     }
   }
 }
