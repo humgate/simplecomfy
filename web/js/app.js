@@ -11,7 +11,7 @@ import * as comfyapi from "./comfyapi.js";
 
     // WebSocket
     const server_address = window.location.hostname + ':' + window.location.port;
-    const socket = new WebSocket('ws://' + server_address + '/ws?clientId=' + client_id);
+    const socket = new WebSocket('wss://' + server_address + '/ws?clientId=' + client_id);
     socket.addEventListener('open', (event) => {
         console.log('Connected to the server');
     });
