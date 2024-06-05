@@ -25,7 +25,6 @@ export async function uploadFile(file, workflow, updateNode, pasted = false) {
         // Wrap file in formdata so it includes filename
         const body = new FormData();
 	    body.append("image", file);
-	    if (pasted) body.append("subfolder", "pasted");
 	    const resp = await fetch("/upload/image", {
 	        method: "POST",
 	        body,
