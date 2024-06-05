@@ -19,18 +19,15 @@ import * as comfyapi from "./comfyapi.js";
     //Listener
     socket.addEventListener('message', (event) => {
         const data = JSON.parse(event.data);
-        if (data.type !== 'crystools.monitor'){
-            console.log(event);
-        } 
 
         if (data.type === 'execution_start') {
              _queue_btn.disabled = true;
              _queue_btn.textContent = 'Preprocessing...'
-        };
+        }
 
         if (data.type === 'progress') {
                _queue_btn.textContent = Math.floor(100*(data['data']['value'])/(data['data']['max'])) + "%"; // progress %
-        };
+        }
 
         if (data.type === 'executed' && data.data.node === '124') {
             if ('images' in data['data']['output']) {

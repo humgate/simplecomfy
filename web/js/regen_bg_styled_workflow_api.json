@@ -346,7 +346,7 @@
       "width": 832,
       "height": 0,
       "interpolation": "lanczos",
-      "method": "keep_proportion",
+      "method": "keep proportion",
       "keep_proportion": true,
       "condition": "always",
       "multiple_of": 0,
