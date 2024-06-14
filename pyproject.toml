@@ -1,0 +1,14 @@
+[project]
+name = "simplecomfy"
+description = "Simple JS application based on ComfyUI which takes prompt and style picture from user and runs hardcoded workflow inference returning generated image to user."
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/humgate/simplecomfy"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "simplecomfy"
+Icon = ""
